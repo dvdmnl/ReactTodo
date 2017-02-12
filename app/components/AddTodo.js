@@ -20,7 +20,7 @@ class AddTodo extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container__footer">
                 <form ref="form" onSubmit={this.onSubmit} className="add-todo-form">
                     <input type="text" ref="todo" placeholder="Enter New Task"/>
                     <button className="button expanded">Add to do</button>
