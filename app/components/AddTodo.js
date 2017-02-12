@@ -22,7 +22,7 @@ class AddTodo extends React.Component {
         return (
             <div>
                 <form ref="form" onSubmit={this.onSubmit} className="add-todo-form">
-                    <input type="text" ref="todo" placeholder="Enter Time In Seconds"/>
+                    <input type="text" ref="todo" placeholder="Enter New Task"/>
                     <button className="button expanded">Add to do</button>
                 </form>
             </div>
