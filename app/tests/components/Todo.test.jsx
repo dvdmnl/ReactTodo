@@ -5,14 +5,14 @@ import $ from 'jQuery';
 import ReactUtils from 'react-addons-test-utils';
 
 
-import Todo from 'Todo'
+import {Todo} from 'Todo';
 
 describe('Todo', () => {
     it('Should Exist', () => {
         expect(Todo).toExist();
     })
 
-    it('Should call onToggle prop with id on click', () => {
+    it('Should dispatch TOGGLE_TODO action  on click', () => {
         var todoData = {
             id:11,
             text: 'Some text here',
@@ -20,12 +20,15 @@ describe('Todo', () => {
         }
 
         var spy = expect.createSpy();
-        var todo = ReactUtils.renderIntoDocument(<Todo {...todoData} onToggle={spy} />)
+        var todo = ReactUtils.renderIntoDocument(<Todo {...todoData} dispatch={spy} />)
 
         var $el = $(ReactDOM.findDOMNode(todo));
         ReactUtils.Simulate.click($el[0])
 
-        expect(spy).toHaveBeenCalledWith(11);
+        expect(spy).toHaveBeenCalledWith({
+            type: 'TOGGLE_TODO',
+            id:todoData.id
+        });
     })
 
 

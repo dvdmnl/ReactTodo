@@ -44,19 +44,7 @@ class ToDoApp extends React.Component {
         })
     }
 
-    handleToggle = (id) => {
-        var updateTodos = this.state.todos.map((todo) => {
-            if (todo.id === id) {
-                todo.completed = !todo.completed;
-                todo.completedAt = todo.completed ? moment().unix() : undefined;
-            }
-            return todo
-        })
-        this.setState({
-            todos: updateTodos
-        })
 
-    }
     render() {
         var {todos, showCompleted, searchText} = this.state;
         var filteredTodos = TodoAPI.filteredTodos(todos,showCompleted,searchText)
@@ -68,7 +56,7 @@ class ToDoApp extends React.Component {
                     <div className="column small-centered small-11 medium-6 large-5">
                         <div className="container">
                             <TodoSearch onSearch={this.handleSearch} />
-                            <TodoList onToggle={this.handleToggle} todos={filteredTodos} />
+                            <TodoList/>
                             <AddTodo onSetAddTodo={this.handleAddTodo} />
                         </div>
                     </div>
@@ -77,14 +65,6 @@ class ToDoApp extends React.Component {
             </div>
         )
     }
-}
-
-ToDoApp.defaultProps = {
-
-}
-
-ToDoApp.ProppTypes = {
-
 }
 
 export default ToDoApp;

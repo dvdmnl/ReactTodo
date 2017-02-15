@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import expect from 'expect';
 import $ from 'jQuery';
 import ReactUtils from 'react-addons-test-utils';
-
-import TodoList from 'TodoList'
-import Todo from 'Todo'
+import {Provider} from 'react-redux'
+import {configure} from 'configureStore'
+import ConnectedTodoList,{TodoList} from 'TodoList'
+import ConnectedTodo, {Todo} from 'Todo'
 
 describe('TodoList', () => {
     it('Should Exist', () => {
@@ -16,16 +17,32 @@ describe('TodoList', () => {
         var todos = [
             {
                 id:1,
-                text:'todo 1'
+                text:'todo 1',
+                completed:false,
+                completedAt:undefined,
+                createdAt:500
             },
             {
                 id:2,
-                text:'todo 2'
+                text:'todo 2',
+                completed:false,
+                completedAt:undefined,
+                createdAt:500
             }
         ]
 
-        var todoList = ReactUtils.renderIntoDocument(<TodoList todos={todos} />)
-        var todosComponents = ReactUtils.scryRenderedComponentsWithType(todoList,Todo);
+        var store = configure({
+            todos
+        })
+
+        var provider =  ReactUtils.renderIntoDocument(
+            <Provider store={store}>
+                <ConnectedTodoList/>
+            </Provider>
+        )
+
+        var todoList = ReactUtils.scryRenderedComponentsWithType(provider,ConnectedTodoList)[0]
+        var todosComponents = ReactUtils.scryRenderedComponentsWithType(todoList,ConnectedTodo);
 
         expect(todosComponents.length).toBe(todos.length);
     })
