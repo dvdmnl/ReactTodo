@@ -28,6 +28,7 @@ module.exports = {
         './app/api'
     ],
     alias: {
+      app:'app',
       configureStore:'app/store/configureStore.js',
       actions:'app/actions/actions.js',
       reducers:'app/reducers/reducers.js',

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import expect from 'expect';
 import $ from 'jQuery';
 import ReactUtils from 'react-addons-test-utils';
+import * as actions from 'actions';
 
 import {AddTodo} from 'AddTodo'
 
@@ -13,10 +14,8 @@ describe('AddTodo', () => {
 
     it('Should dispatch ADD_TODO when valid todoText', () => {
         var todoText = 'Check Mail';
-        var action = {
-            type:'ADD_TODO',
-            text:todoText
-        }
+        var action = actions.startAddTodo(todoText);
+
         var spy = expect.createSpy();
         var addTodoForm = ReactUtils.renderIntoDocument(<AddTodo dispatch={spy} />);
         var $el = $(ReactDOM.findDOMNode(addTodoForm));
