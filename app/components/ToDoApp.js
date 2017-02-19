@@ -7,7 +7,7 @@ import AddTodo from 'AddTodo'
 import TodoSearch from 'TodoSearch'
 
 
-class ToDoApp extends React.Component {
+class TodoApp extends React.Component {
     render() {
         return (
             <div>
@@ -27,4 +27,4 @@ class ToDoApp extends React.Component {
     }
 }
 
-export default ToDoApp;
+export default TodoApp;
