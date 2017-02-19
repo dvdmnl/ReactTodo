@@ -2,12 +2,14 @@ import firebase from 'firebase'
 
 try {
     var config = {
-        apiKey: "AIzaSyAwsvgJIHXP20S1eioGXea_8dJDVoZh7gk",
-        authDomain: "my-todo-app-9f5a0.firebaseapp.com",
-        databaseURL: "https://my-todo-app-9f5a0.firebaseio.com",
-        storageBucket: "my-todo-app-9f5a0.appspot.com",
-        messagingSenderId: "1079581271818"
+        apiKey: process.env.API_KEY,
+        authDomain: process.env.AUTH_DOMAIN,
+        databaseURL: process.env.DATABASE_URL,
+        storageBucket: process.env.STORAGE_BUCKET,
+        messagingSenderId: process.env.MESSAGING_SENDER_ID
     };
+
+    console.log('config ==> ' , config)
     firebase.initializeApp(config);
 } catch (e) {
 
