@@ -54,7 +54,6 @@ export var startAddTodos = () => {
 
         return todosRef.once('value').then((snapshot) => {
             var todos = snapshot.val() || {};
-            console.log('todos', todos)
             var parsedTodos = [];
 
             Object.keys(todos).forEach((todoId) => {
