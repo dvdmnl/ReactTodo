@@ -102,6 +102,28 @@ describe('Reducers', () => {
 
         })
 
+
+
+        it('Should wioeout todos on LOGOUT', () => {
+            var todos=[
+                {
+                    id:'111',
+                    text:'anything',
+                    completed:false,
+                    completedAt:undefined,
+                    createdAt:33000
+                }
+            ]
+
+            var action = {
+                type:'LOGOUT'
+            }
+
+            var res = reducers.todosReducer(df([todos]),df(action));
+
+            expect(res.length).toEqual(0)
+        })
+
     })
 
     describe('authReducer', () => {
