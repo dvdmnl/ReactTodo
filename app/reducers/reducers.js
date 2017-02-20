@@ -1,3 +1,6 @@
+var uuid = require('node-uuid');
+var moment = require('moment');
+
 
 export var searchTextReducer = (state = [], action) => {
     switch (action.type) {
