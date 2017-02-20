@@ -6,7 +6,7 @@ import ReactUtils from 'react-addons-test-utils';
 import {Provider} from 'react-redux';
 var configureStore = require('configureStore');
 
-import TodoApp from 'TodoApp';
+import {TodoApp} from 'TodoApp';
 import TodoList from 'TodoList';
 
 
